@@ -12,7 +12,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'DECOY Community',
-    ImageUrl: 'img/Fleet.png',
+    ImageUrl: 'img/fleet.png',
     description: (
       <>
         How to integrate with DECOY and get the most from the opportunities around us
