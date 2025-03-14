@@ -13,8 +13,7 @@ We expect all pilots in DECOY to live the following values:
 - Be in the Standing Fleet when online
 - Be online in Mumble in the Standing Fleet channel whilst on Discord Corp comms
 - Have all pilots registered on SEAT
-- All pilots have DEATHCLONES in IAK-JW - EEE-ak
-- All pilots have JUMP CLONES in MJ-5F9 - B E A N S T A R
+- All pilots have DEATHCLONES in B9-C24 - Phoenix Nest
 - All pilots and alts to have hangars ready at all times
 
 ## PvE Rules
