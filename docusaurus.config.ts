@@ -9,8 +9,8 @@ const config: Config = {
   tagline: '',
   favicon: 'img/favicon.ico',
 
-  url: 'https://bjkerridge.github.io',
-  baseUrl: '/docusaurus-decoy/',
+  url: 'https://docs.xdecoyx.com',
+  baseUrl: '/',
   organizationName: 'bjkerridge',
   projectName: 'docusaurus-decoy',
 
