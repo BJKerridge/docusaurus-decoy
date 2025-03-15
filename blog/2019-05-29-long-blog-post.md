@@ -2,6 +2,7 @@
 slug: long-blog-post
 title: Long Blog Post
 authors: bjk
+draft: true
 ---
 
 This is the summary of a very long blog post,

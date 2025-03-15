@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -67,7 +67,7 @@ const config: Config = {
           position: 'left',
           label: 'Docs',
         },
-        {to: '/blog', label: 'Timeline', position: 'left'},
+        //{to: '/blog', label: 'Timeline', position: 'left'},
         {
           href: 'https://seat.xdecoyx.com/home',
           label: 'SeAT',
@@ -76,6 +76,11 @@ const config: Config = {
         {
           href: 'https://zkillboard.com/alliance/99012410/',
           label: 'zKillboard',
+          position: 'right',
+        },
+        {
+          href: 'https://forums.eveonline.com/t/decoy/357372',
+          label: 'EVE Forum Post',
           position: 'right',
         },
       ],

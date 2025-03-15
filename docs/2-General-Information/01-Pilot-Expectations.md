@@ -2,6 +2,8 @@
 sidebar_position: 1
 pagination_next: null
 pagination_prev: null
+title: Pilot Expectations
+description: Code of Conduct / PvE Rules
 ---
 
 # Pilot Expectations

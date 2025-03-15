@@ -2,6 +2,9 @@
 sidebar_position: 1
 pagination_next: null
 pagination_prev: null
+image: https://images.evetech.net/types/17732/icon
+title: Tempest Fleet Issue
+description: Bhaalgorn, Damnation, Eos, Loki, Devoter, Phobos, Guardian, Pilogrim, Scorpion
 ---
 
 # Tempest Fleet Issue

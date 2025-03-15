@@ -2,6 +2,8 @@
 sidebar_position: 2
 pagination_next: null
 pagination_prev: null
+title: Maelstrom
+description: Rapier, Claymore, Scimitar, Bellicose
 ---
 
 # Maelstroms
