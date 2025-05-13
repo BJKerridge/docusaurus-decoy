@@ -17,6 +17,7 @@ We expect all pilots in DECOY to live the following values:
 - Have all pilots registered on SEAT
 - All pilots have DEATHCLONES in B9-C24 - Phoenix Nest
 - All pilots and alts to have hangars ready at all times
+- Pray to BJK DAILY
 
 ## PvE Rules
 lt is recommended to focus on Missions and filament sites due to these being instances and non-invasive of other pilots income stream, however:
