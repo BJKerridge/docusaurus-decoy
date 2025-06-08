@@ -6,7 +6,7 @@ title: DECOY Space
 description: What's where, and how to use it
 ---
 
-The home of DECOY is the Fortizar [R-2R0G - DECOY](https://evemaps.dotlan.net/map/Pure_Blind-Fade-Cloud_Ring/LY-FY6#ihub) in Pure Blind. The remainder of this constellation has Astrahus, and all of our citadels have compression facilities.
+The home of DECOY is the Fortizar [R-2R0G - DECOY](https://evemaps.dotlan.net/map/Pure_Blind-Fade-Cloud_Ring/LY-FY6#ihub) in Pure Blind. The rest of this constellation has Astrahus, and all our citadels have compression facilities.
 
 |System|Sec|Citadel|Minor|Major|Explo|Ore|Other|
 |-|-|-|-|-|-|-|-|
