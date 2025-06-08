@@ -1,41 +1,19 @@
-# Website
+# DECOY Docs
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
-### Installation
+The content and scripts have been modified to suit DECOYs needs. The page can be found hosted [here](https://docs.xdecoyx.com).
 
-```
-$ yarn
-```
+## Making Modifications
 
-### Local Development
+Content can be modified by forking this repo, changing the markdown files in the docs folder, then creating a pull request to merge this into the main branch. After merging, the website is rebuilt after a few minutes.
 
-```
-$ yarn start
-```
+Refer to the [markdown format](https://docusaurus.io/docs/markdown-features) and [Docusaurus documentation](https://docusaurus.io/docs).
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+## Local Development
 
-### Build
+You can run the server locally in an IDE if you wish to make larger edits. Install [Node.JS](https://nodejs.org/en) and use the following commands:
 
-```
-$ yarn build
-```
+`npm i` - Install all the required node modules
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+`npm start` - Runs the server locally

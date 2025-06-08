@@ -4,6 +4,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const buildTime = new Date().toLocaleString(); // Or .toISOString() if you prefer UTC format
+
 const config: Config = {
   title: 'DECOY',
   tagline: '',
@@ -53,20 +55,15 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/decoySocial.png',
     navbar: {
       title: 'DECOY',
       logo: {
         alt: 'Decoy',
         src: 'img/decoyLogo.png',
+        href: 'docs/decoy',
       },
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Docs',
-        },
         //{to: '/blog', label: 'Timeline', position: 'left'},
         {
           href: 'https://seat.xdecoyx.com/home',
@@ -87,7 +84,7 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
-      copyright: `DECOY | ${new Date().getFullYear()}`,
+      copyright: `Updated at ${buildTime}`,
     },
     prism: {
       theme: prismThemes.github,
