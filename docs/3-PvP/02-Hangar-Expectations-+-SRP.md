@@ -8,34 +8,63 @@ description: Buyback & Market Seeding program
 
 # Hangar Expectations
 
-## B-9C24 - Phoenix Coalition Doctrines 
-Have the following ships in your hangar for Phoenix Co ops:
-- [Tempest Fleet Issue](https://phoenix-coalition.com/fittings/doctrine/8/)
-- [Maelstrom](https://phoenix-coalition.com/fittings/doctrine/18/)
-- [Vulture](https://phoenix-coalition.com/fittings/doctrine/6/)
-- [Cerberus](https://phoenix-coalition.com/fittings/doctrine/2/)
-- [Cyclone Fleet Issue](https://phoenix-coalition.com/fittings/doctrine/3/)
-- [Hurricane Fleet Issue](https://phoenix-coalition.com/fittings/doctrine/15/)
-- [Ferox](https://phoenix-coalition.com/fittings/doctrine/29/)
-- [Osprey Navy Issue](https://phoenix-coalition.com/fittings/doctrine/7/)
-- [Harpy](https://phoenix-coalition.com/fittings/doctrine/26/)
+## 319-3D - SUMMERCAMP '25
+Deathclone location in Delve, main military staging for the assault on Delve/PB/Querious.
 
-## B-9C24 - Decoy Doctrines
-In addition to the above, DECOY will call its own fleets using the following:
-- Leshak
-- Machariel
+- Phoenix Doctrines:
+  - [Rokh](https://phoenix-coalition.com/fittings/doctrine/34/)
+  - [Maelstrom](https://phoenix-coalition.com/fittings/doctrine/18/)
+  - [Cerberus](https://phoenix-coalition.com/fittings/doctrine/2/)
+  - [Cyclone Fleet Issue](https://phoenix-coalition.com/fittings/doctrine/3/)
+  - [Ferox](https://phoenix-coalition.com/fittings/doctrine/29/)
+  - [Harpy](https://phoenix-coalition.com/fittings/doctrine/26/)
+- DECOY Doctrines:
+  - Vedmak
+- Alts:
+  - Tackle Crow
+  - Sabre / Flycatcher
+  - Bombing Bomber
 
-## B-9C24 - Alt / Special Doctrines
-To compliment each fleet, it is recommended to bring the following on an alt:
-- Tackle Crow
-- Sabre
-- Bombing Bomber
+---
 
-## R-2R0G - Standing Fleet
-It is highly recommended to have a few variations of ships for local defence:
-- Cheap MWD Cruiser
-- AB ESS Defence ship
-- Wormhole rolling Sigil
+## B-9C24 - Phoenix Nest
+Jumpclone location in Pure Blind, to oversee our former home
+
+- Phoenix Doctrines:
+  - [Tempest Fleet Issue](https://phoenix-coalition.com/fittings/doctrine/8/)
+  - [Maelstrom](https://phoenix-coalition.com/fittings/doctrine/18/)
+  - [Vulture](https://phoenix-coalition.com/fittings/doctrine/6/)
+  - [Cerberus](https://phoenix-coalition.com/fittings/doctrine/2/)
+  - [Cyclone Fleet Issue](https://phoenix-coalition.com/fittings/doctrine/3/)
+  - [Hurricane Fleet Issue](https://phoenix-coalition.com/fittings/doctrine/15/)
+  - [Ferox](https://phoenix-coalition.com/fittings/doctrine/29/)
+  - [Osprey Navy Issue](https://phoenix-coalition.com/fittings/doctrine/7/)
+  - [Harpy](https://phoenix-coalition.com/fittings/doctrine/26/)
+- DECOY Doctrines:
+  - Leshak
+  - Machariel
+- Alts:
+  - Tackle Crow
+  - Sabre
+  - Bombing Bomber
+
+---
+
+## R-2R0G - DECOY
+This is our PvE Stager so realistically, you'll only need PvE alts here for raising adms, rolling wormholes or saving your ESS banks.
+
+- Alts:
+  - Ishtar
+  - Hulk/Mackinaw/Porpoise
+  - Sigil
+
+---
+
+## Cleyd IV - Moon 6 - Carthum Conglomerate Factory 
+Only a jumpclone is required in this location. DECOY has a stockpile of Battleships incase of High-Sec conflicts.
+
+---
+
 
 ## SRP
 All pinged operations by DECOY in #decoy-pings will recieve SRP.

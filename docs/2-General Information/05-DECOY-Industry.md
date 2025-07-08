@@ -6,7 +6,7 @@ title: DECOY Industry
 description: Manufacture for the Alliance
 ---
 
-We have a list of items we expect on the [public market](https://janice.e-351.com/a/qvZAml). at all times, then based on this, a list of minerals/components we require on the [mineral market](https://janice.e-351.com/a/MWndGr).
+We have a list of items we expect on the [public market](https://janice.e-351.com/a/qvZAml) at all times, then based on this, a list of minerals/components we require on the [mineral market](https://janice.e-351.com/a/MWndGr).
 
 For Industry facilities, we are currently using the Phoenix Coalition citadels in B-9C24. There will be new infrastructure in Delve soon!
 
