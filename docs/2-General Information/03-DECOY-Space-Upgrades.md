@@ -29,3 +29,19 @@ The home of the Phoenix Coalition is the Keepstar [B-9C24 - Phoenix Nest](https:
 The coalition does offer [shared space](https://evemaps.dotlan.net/map/Pure_Blind-Fade-Cloud_Ring/0A-73B/K-QUVW/Miennue/G8-D09/WMP-OF/VNX-P0/XG-D1L/6RCQ-V/O-0HW8/6-4V20#adm), where you are free to rat/mine in any of these.
 
 As part of our deathclone deployment to Delve, all Syn IHUB space is considered [shared space](https://evemaps.dotlan.net/map/Delve-Period_Basis-Querious/W-4U1E/LSC-4P/F-I56R/OK-FEM#ihub) too.
+
+
+---
+
+![Mercenary Den](03-Mercenary-Den.jpeg)
+
+# Mercenary Dens
+These structures attach to Temperate Planets and generate Infomorph Decryption Keys, but slowly reduce the planets workforce, affecting our sovereignty upgrades.
+
+It takes only 10 minutes to anchor a Mercenary Den, but shooting one generates a kill timer in 18~30 hours. For this reason, DECOY has anchored dens on all of our Temperate Planets to prevent hostiles from doing this.
+
+Every 3 days, combat sites spawn across our space triggered by the Mercenary Dens, which can only be triggered by the Mercenary Den Owner. Completing these will **remove the workforce impact** - so DECOY will trigger these and anyone is welcome to run them. There are some fittings for dealing with these sites stored ingame:
+
+`DECOY - Gila Mercenary Den`
+
+`DECOY - Cynabal Mercenary Den`
