@@ -28,6 +28,7 @@ const data = [
   { month: 'April 2025', value: 4578500000 },
   { month: 'May 2025', value: 4919800000 },
   { month: 'June 2025', value: 2926800000 },
+  { month: 'July 2025', value: 6207300000 },
 ];
 
 const CustomTooltip = ({ active, payload, label }) => {
