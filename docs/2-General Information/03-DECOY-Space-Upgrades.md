@@ -19,23 +19,47 @@ The home of DECOY is the Fortizar [R-2R0G - DECOY](https://evemaps.dotlan.net/ma
 
 * *R-2R0G and WW-KGD will toggle between the Zydrine belt and Major Array based on ADM*
 
-For Industry facilities, we are currently using the Phoenix Coalition citadels in B-9C24.
+---
+
+![Raitarus](03-Raitarus.png)
+
+## Industry Facilities
+
+We have 3 Raitarus in R-2R0G with Material Efficiency Rigs:
+
+### R-2R0G - zFuel + Equip
+- [Ammunition](https://everef.net/types/37158) → T1/T2 ammo, charges, scripts.
+- [Equipment](https://everef.net/types/43920) → Ship modules, weapons, rigs.
+- [Structure](https://everef.net/types/43875) → Structures, structure modules, structure rigs.
+
+### R-2R0G - zT1
+- [Basic Medium Ship](https://everef.net/types/37146) → T1 + Faction Cruisers, Battlecruisers, Industrials, Mining Barges
+- [Basic Large Ship](https://everef.net/types/43732) → T1 + Faction Battleships, Orca, Bowhead
+- [Basic Capital Component](https://everef.net/types/43870) → T1 Capital Components
+
+### R-2R0G - zT2
+- [Advanced Medium Ship](https://everef.net/types/43858) → T2/T3 Cruisers, Battlecruisers and Subsystems
+- [Advanced Large Ship](https://everef.net/types/43862) → T2 Battleships + JF's
+- [Advanced Component](https://everef.net/types/43867) → T2 Cap Components, Data Interfaces + T3 Components
+
+### Reprocessor
+
+Coming Soon...
+
+### Reactions
+
+Coming Soon...
+
+### Capital Manufacturing
+
+Use a LowSec NPC station in range of R-2R0G after building your capital components here
 
 ---
 
-# Phoenix Coalition Home
-The home of the Phoenix Coalition is the Keepstar [B-9C24 - Phoenix Nest](https://evemaps.dotlan.net/map/Pure_Blind-Fade-Cloud_Ring/B-9C24#ihub) in Pure Blind. This is the PvP stager where deathclones should be kept.
-
-The coalition does offer [shared space](https://evemaps.dotlan.net/map/Pure_Blind-Fade-Cloud_Ring/0A-73B/K-QUVW/Miennue/G8-D09/WMP-OF/VNX-P0/XG-D1L/6RCQ-V/O-0HW8/6-4V20#adm), where you are free to rat/mine in any of these.
-
-As part of our deathclone deployment to Delve, all Syn IHUB space is considered [shared space](https://evemaps.dotlan.net/map/Delve-Period_Basis-Querious/W-4U1E/LSC-4P/F-I56R/OK-FEM#ihub) too.
-
-
----
 
 ![Mercenary Den](03-Mercenary-Den.jpeg)
 
-# Mercenary Dens
+## Mercenary Dens
 These structures attach to Temperate Planets and generate Infomorph Decryption Keys, but slowly reduce the planets workforce, affecting our sovereignty upgrades.
 
 It takes only 10 minutes to anchor a Mercenary Den, but shooting one generates a kill timer in 18~30 hours. For this reason, DECOY has anchored dens on all of our Temperate Planets to prevent hostiles from doing this.
