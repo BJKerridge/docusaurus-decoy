@@ -42,6 +42,4 @@ This is a jump clone content deployment to support OnlyFleets. fighting in Delve
 ## SRP
 All pinged operations by DECOY in #decoy-pings will recieve SRP.
 
-All pinged operations by Phoenix Co in #important_pings will recieve SRP.
-
 Standing Fleet is NOT SRP'd, so fly ships at your own risk!
