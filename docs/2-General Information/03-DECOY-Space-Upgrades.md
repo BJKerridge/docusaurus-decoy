@@ -15,7 +15,7 @@ The home of DECOY is the Fortizar [R-2R0G - DECOY](https://evemaps.dotlan.net/ma
 |Q-5211|-0.14|Astra|-|1|-|Mexallon 2|-|
 |CR-AQH|-0.28|Astra|-|1|-|Megacyte 2|-|
 |XQ-PXU|-0.15|Astra|-|1|-|Isogen 2|-|
-|WW-KGD|-0.18|Astra|-|1|-|Zydrine 2|-|
+|WW-KGD|-0.18|Astra|-|1|2|Zydrine 2|-|
 
 * *R-2R0G and WW-KGD will toggle between the Zydrine belt and Major Array based on ADM*
 
