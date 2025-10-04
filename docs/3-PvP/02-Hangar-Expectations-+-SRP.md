@@ -28,6 +28,17 @@ This is our PvE Stager so realistically, you'll only need PvE alts here for rais
 
 ---
 
+## K7D-II - Iserlohn Fortress
+This is a jump clone content deployment to support OnlyFleets. fighting in Delve. I will provide handout mainline ships, but I will require pilots to have their own pods & BLOPS. Pods can be found under the 'Amarr Shuttle' fittings ingame, BLOPS fittings will be coordinated when we perform our move ops.
+
+- Ships in Hangar:
+  - Redeemer/Panther/Legion/Proteus/Pilgrim (for fittings, ask BJK)
+- JumpClone Pods:
+  - Nightmare Nirvana Pod
+  - Redeemer Amulet Pod
+
+---
+
 ## SRP
 All pinged operations by DECOY in #decoy-pings will recieve SRP.
 

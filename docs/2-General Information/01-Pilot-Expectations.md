@@ -13,5 +13,4 @@ description: Code of Conduct / PvE Rules
 - Be proud to wave the DECOY flag
 - Have all pilots registered on SEAT
 - All pilots have DEATHCLONES in `R-2R0G - DECOY`
-- All pilots have JUMPCLONES in `B-9C24 - Phoenix Nest`
-- All pilots have JUMPCLONES in `K-6K16 - Phoenix Summernest`
+- All pilots have JUMPCLONES in `K7D-II - Iserlohn Fortress`

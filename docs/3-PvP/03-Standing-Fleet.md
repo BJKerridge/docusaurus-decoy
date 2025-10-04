@@ -22,4 +22,4 @@ However, if there is no fleet available, follow these steps:
 ```
 6. Create a new advert with the following:
 
-![Standing Fleet Setup](/img/phoenix-standing.png)
+![Fleet Setup](03-Fleet.png)

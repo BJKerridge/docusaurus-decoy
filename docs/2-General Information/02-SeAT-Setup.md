@@ -11,7 +11,6 @@ DECOY uses a variety of third-party web-applications and software:
 - [SeAT](https://seat.xdecoyx.com/home) is a web-app for tracking in-game activity, along with sync'ing your user account to Discord/Mumble.
 - [Discord](https://discord.com/) is software for chats, informal fleet comms, event noficiations and meetings.
 - [Mumble](https://www.mumble.info/) is VoIP software for organised fleets.
-- [Alliance Auth](https://phoenix-coalition.com/) is a web-app used by Phoenix Coalition for Discord & Mumble integration.
 
 ### DECOY - SeAT Setup
 
@@ -32,6 +31,6 @@ Once you've registered your pilots on SeAT, select 'Connector' and 'Identities' 
 
 ---
 
-### PHOENIX CO - Discord & Mumble Setup
+### Other Services
 
-Phoenix Co also has a Discord Server, along with their own Mumble server. Navigate to [services](https://phoenix-coalition.com/services/). From here, you can click the `->` arrows to connect to Discord and Mumble.
+We have access to Mumble/Discord for other alliances too. Reach out to BJK directly for this information.
