@@ -1,3 +1,19 @@
+// Custom sorting function that handles nulls properly
+const numericSortWithNulls = (rowA, rowB, columnId) => {
+  const aVal = rowA.getValue(columnId);
+  const bVal = rowB.getValue(columnId);
+
+  // Both null - maintain order
+  if (aVal == null && bVal == null) return 0;
+  
+  // One is null - put it at the end (return positive to push to end)
+  if (aVal == null) return 1;
+  if (bVal == null) return -1;
+
+  // Both have values - reverse comparison so descending works correctly
+  return bVal - aVal;
+};
+
 import React from "react";
 import {
   useReactTable,
@@ -31,21 +47,21 @@ export default function SortableResourceTable({ data }) {
             romanToInt(a.original.planet) - romanToInt(b.original.planet),
         },
         { header: "Type", accessorKey: "type" },
-        { header: "Aqueous Liquids", accessorKey: "aqueousLiquids" },
-        { header: "Autotrophs", accessorKey: "autotrophs" },
-        { header: "Base Metals", accessorKey: "baseMetals" },
-        { header: "Carbon Compounds", accessorKey: "carbonCompounds" },
-        { header: "Complex Organisms", accessorKey: "complexOrganisms" },
-        { header: "Felsic Magma", accessorKey: "felsicMagma" },
-        { header: "Heavy Metals", accessorKey: "heavyMetals" },
-        { header: "Ionic Solutions", accessorKey: "ionicSolutions" },
-        { header: "Micro Organisms", accessorKey: "microOrganisms" },
-        { header: "Noble Gas", accessorKey: "nobleGas" },
-        { header: "Noble Metals", accessorKey: "nobleMetals" },
-        { header: "Non-CS Crystals", accessorKey: "nonCsCrystals" },
-        { header: "Planktic Colonies", accessorKey: "plankticColonies" },
-        { header: "Reactive Gas", accessorKey: "reactiveGas" },
-        { header: "Suspended Plasma", accessorKey: "suspendedPlasma" },
+        { header: "Aqueous Liquids", accessorKey: "aqueousLiquids", sortingFn: numericSortWithNulls },
+        { header: "Autotrophs", accessorKey: "autotrophs", sortingFn: numericSortWithNulls },
+        { header: "Base Metals", accessorKey: "baseMetals", sortingFn: numericSortWithNulls },
+        { header: "Carbon Compounds", accessorKey: "carbonCompounds", sortingFn: numericSortWithNulls },
+        { header: "Complex Organisms", accessorKey: "complexOrganisms", sortingFn: numericSortWithNulls },
+        { header: "Felsic Magma", accessorKey: "felsicMagma", sortingFn: numericSortWithNulls },
+        { header: "Heavy Metals", accessorKey: "heavyMetals", sortingFn: numericSortWithNulls },
+        { header: "Ionic Solutions", accessorKey: "ionicSolutions", sortingFn: numericSortWithNulls },
+        { header: "Micro Organisms", accessorKey: "microOrganisms", sortingFn: numericSortWithNulls },
+        { header: "Noble Gas", accessorKey: "nobleGas", sortingFn: numericSortWithNulls },
+        { header: "Noble Metals", accessorKey: "nobleMetals", sortingFn: numericSortWithNulls },
+        { header: "Non-CS Crystals", accessorKey: "nonCsCrystals", sortingFn: numericSortWithNulls },
+        { header: "Planktic Colonies", accessorKey: "plankticColonies", sortingFn: numericSortWithNulls },
+        { header: "Reactive Gas", accessorKey: "reactiveGas", sortingFn: numericSortWithNulls },
+        { header: "Suspended Plasma", accessorKey: "suspendedPlasma", sortingFn: numericSortWithNulls },
       ];
 
   const table = useReactTable({
@@ -70,16 +86,17 @@ export default function SortableResourceTable({ data }) {
                   verticalAlign: "bottom", // aligns rotated text nicely
                   textAlign: "center",
                   whiteSpace: "nowrap",
-                  height: "100px" // give space for rotation
+                  height: "165px" // give space for rotation
                 }}
                 onClick={header.column.getToggleSortingHandler()}
               >
                 <div
                   style={{
-                    transform: "rotate(-75deg)",
+                    transform: "rotate(-90deg)",
                     width: "40px",
                     margin: "10 auto",
-                    transformOrigin: "bottom left",
+                    padding: "3px",
+                    transformOrigin: "bottom middle",
                     display: "inline-block"
                   }}
                 >
