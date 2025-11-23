@@ -38,7 +38,7 @@ We have 3 Raitarus in R-2R0G with Material Efficiency Rigs:
 ### T8H-66 - zT2
 - [Advanced Medium Ship](https://everef.net/types/43858) → T2/T3 Cruisers, Battlecruisers and Subsystems
 - [Advanced Large Ship](https://everef.net/types/43862) → T2 Battleships + JF's
-- [Advanced Component](https://everef.net/types/43867) → T2 Cap Components, Data Interfaces + T3 Components
+- [Advanced Component](https://everef.net/types/43867) → T2 Cap Components, T1 Battleship Components, Data Interfaces + T3 Components
 
 ### Reprocessor + Reactor
 
