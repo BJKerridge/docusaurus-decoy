@@ -8,18 +8,20 @@ description: Buyback & Market Seeding program
 
 # Hangar Expectations
 
-## R-2R0G - DECOY
-This is our PvE Stager so realistically, you'll only need PvE alts here for raising adms, rolling wormholes or saving your ESS banks.
+## T8H-66 - DECOY
+This is our main stager where deathclones should live. You should have:
 
-- DECOY Doctrines:
+- Mains:
   - Leshak
   - Machariel
-  - Hyperspatial Battleship
-  - ESS Defence Ship
   - Exequror Navy Issue
-  - Tornado
+  - Omen Navy Issue
+  - Flycatcher
+  - Hyperspatial Battleship (HD)
+  - Hyperspatial Cruiser/BC (HD)
+  - ESS Defence Ship (HD)
 - Alts:
-  - Tackle Crow
+  - Tackle Raptor
   - Sabre
   - Bombing Bomber
   - Ishtar
@@ -29,13 +31,25 @@ This is our PvE Stager so realistically, you'll only need PvE alts here for rais
 ---
 
 ## K7D-II - Iserlohn Fortress
-This is a jump clone content deployment to support OnlyFleets. fighting in Delve. I will provide handout mainline ships, but I will require pilots to have their own pods & BLOPS. Pods can be found under the 'Amarr Shuttle' fittings ingame, BLOPS fittings will be coordinated when we perform our move ops.
+This is the main stager of OnlyFleets and those with MG Amulet/Nirvana sets may join their fleets in Doctrine Ships, otherwise join with tackle/logi.
 
-- Ships in Hangar:
-  - Redeemer/Panther/Legion/Proteus/Pilgrim (for fittings, ask BJK)
-- JumpClone Pods:
-  - Nightmare Nirvana Pod
-  - Redeemer Amulet Pod
+- OnlyFleets Doctrines:
+  - Redeemer
+  - Nightmare
+  - Leshak
+- Capsules:
+  - Mid-Grade Nirvana
+  - Mid-Grade Amulet
+
+---
+
+## Torrinos V - Moon 5 - Lai Dai Corporation Factory 
+Pure Blind is an overextention from WinterCo, and we should be able to cause some damage to them with a jump clone deployment. This ships will all be handouts.
+
+- Mains
+  - Omen Navy Issue
+  - Flycatcher
+  - Tornado
 
 ---
 

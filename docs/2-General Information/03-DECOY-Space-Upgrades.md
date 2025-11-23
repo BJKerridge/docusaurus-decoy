@@ -6,18 +6,16 @@ title: DECOY Space & Upgrades
 description: What's where, and how to use it
 ---
 
-The home of DECOY is the Fortizar [R-2R0G - DECOY](https://evemaps.dotlan.net/map/Pure_Blind-Fade-Cloud_Ring/LY-FY6#ihub) in Pure Blind. The rest of this constellation has Astrahus, and all our citadels have compression facilities.
+The home of DECOY is the Fortizar [T8H-66](https://evemaps.dotlan.net/map/Querious/T8H-66#sec) in Querious.
 
 |System|Sec|Citadel|Minor|Major|Explo|Ore|Other|
 |-|-|-|-|-|-|-|-|
-|R-2R0G|-0.21|Fort|-|3|-|Zydrine 2|Cyno Beacon|
-|M-YCD4|-0.18|Astra|-|1|-|Nocxium 2|-|
-|Q-5211|-0.14|Astra|-|1|-|Mexallon 2|-|
-|CR-AQH|-0.28|Astra|-|1|-|Megacyte 2|-|
-|XQ-PXU|-0.15|Astra|-|1|-|Isogen 2|-|
-|WW-KGD|-0.18|Astra|-|1|2|Zydrine 2|-|
-
-* *R-2R0G and WW-KGD will toggle between the Zydrine belt and Major Array based on ADM*
+|A2-V27|-0.39|Fort|-|3|-|-|Ice|
+|O3L-95|-0.37|Astra|-|1|-|Nocxium 2|-|
+|A3-LOG|-0.26|Astra|-|1|-|Mexallon 2|-|
+|T8H-66|-0.31|Fort|-|1|-|Megacyte 2|-|
+|7V-KHW|-0.17|Astra|-|1|-|Isogen 2|-|
+|0-WT2D|-0.12|Astra|-|1|-|Zydrine 2|-|
 
 ---
 
@@ -27,28 +25,27 @@ The home of DECOY is the Fortizar [R-2R0G - DECOY](https://evemaps.dotlan.net/ma
 
 We have 3 Raitarus in R-2R0G with Material Efficiency Rigs:
 
-### R-2R0G - zFuel + Equip
+### T8H-66 - zFuel + Equip
 - [Ammunition](https://everef.net/types/37158) → T1/T2 ammo, charges, scripts.
 - [Equipment](https://everef.net/types/43920) → Ship modules, weapons, rigs.
 - [Structure](https://everef.net/types/43875) → Structures, structure modules, structure rigs.
 
-### R-2R0G - zT1
+### T8H-66 - zT1
 - [Basic Medium Ship](https://everef.net/types/37146) → T1 + Faction Cruisers, Battlecruisers, Industrials, Mining Barges
 - [Basic Large Ship](https://everef.net/types/43732) → T1 + Faction Battleships, Orca, Bowhead
 - [Basic Capital Component](https://everef.net/types/43870) → T1 Capital Components
 
-### R-2R0G - zT2
+### T8H-66 - zT2
 - [Advanced Medium Ship](https://everef.net/types/43858) → T2/T3 Cruisers, Battlecruisers and Subsystems
 - [Advanced Large Ship](https://everef.net/types/43862) → T2 Battleships + JF's
 - [Advanced Component](https://everef.net/types/43867) → T2 Cap Components, Data Interfaces + T3 Components
 
-### Reprocessor
+### Reprocessor + Reactor
 
-Coming Soon...
-
-### Reactions
-
-Coming Soon...
+### T8H-66 - zAthanor
+- [Asteroid Ore Grading Processor](https://everef.net/types/46634) → Asteroid Belt Ore
+- [Ice Grading Processor](https://everef.net/types/46636) → Ice Belt Ore
+- [Composite Reactor Material Efficiency](https://everef.net/types/46486) → T2 Composite Reactions
 
 ### Capital Manufacturing
 

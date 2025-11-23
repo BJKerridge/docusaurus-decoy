@@ -11,5 +11,3 @@ description: Code of Conduct for PvE
 - Ore Anomalies – Cherry-picking is not allowed in any ore anomaly, due to stopping the site respawning.
 - Moon Mining - No more moons, long live Metenox! Mining Anomlies are better isk/h and can be compressed via Porpoise.
 - Friendlies in our space - Our constellations is PRIVATE, meaning other alliances are not allowed to run any type of site here. If you catch someone not complying, send a screenshot to BJK and ask the pilot to leave.
-
-For rules specific to Phoenix Coalition, you can read their guide [here](https://docs.google.com/document/d/1BLGlKTy0xRTDbtAjsTSMmXN47zGJ9ux0x3wb1mf2JrM/edit?tab=t.0#heading=h.bxr8e8dgckg0).

@@ -4,6 +4,7 @@ pagination_next: null
 pagination_prev: null
 title: DECOY Industry
 description: Manufacture for the Alliance
+sidebar_class_name: hidden
 ---
 
 We have a list of items we expect on the [public market](https://janice.e-351.com/a/qvZAml) at all times, then based on this, a list of minerals/components we require on the [mineral market](https://janice.e-351.com/a/MWndGr).

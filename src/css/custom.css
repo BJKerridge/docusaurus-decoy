@@ -55,3 +55,7 @@
   border-radius: 6px !important;
   padding: 8px !important;
 }
+
+.hidden {
+  display: none !important;
+  }
