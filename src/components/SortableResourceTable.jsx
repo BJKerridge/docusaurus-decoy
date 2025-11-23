@@ -1,122 +1,135 @@
-// Custom sorting function that handles nulls properly
-const numericSortWithNulls = (rowA, rowB, columnId) => {
-  const aVal = rowA.getValue(columnId);
-  const bVal = rowB.getValue(columnId);
+import React, { useState, useEffect } from "react";
+import Papa from "papaparse";
 
-  // Both null - maintain order
-  if (aVal == null && bVal == null) return 0;
-  
-  // One is null - put it at the end (return positive to push to end)
-  if (aVal == null) return 1;
-  if (bVal == null) return -1;
+export default function SortableResourceTable({ csvPath = '/data/pi-planets.csv' }) {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
 
-  // Both have values - reverse comparison so descending works correctly
-  return bVal - aVal;
-};
+  useEffect(() => {
+    const loadCSV = async () => {
+      try {
+        console.log('Attempting to fetch CSV from:', csvPath);
+        const response = await fetch(csvPath);
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        const csvData = await response.text();
+        
+        Papa.parse(csvData, {
+          header: true,
+          skipEmptyLines: true,
+          dynamicTyping: true,
+          complete: (results) => {
+            // Convert empty strings to null
+            const transformed = results.data.map(row => {
+              const newRow = {};
+              Object.keys(row).forEach(key => {
+                newRow[key] = row[key] === '' ? null : row[key];
+              });
+              return newRow;
+            });
+            setData(transformed);
+            setLoading(false);
+          },
+          error: (error) => {
+            setError(`CSV parsing error: ${error.message}`);
+            setLoading(false);
+          }
+        });
+      } catch (err) {
+        setError(`Failed to load CSV: ${err.message}`);
+        setLoading(false);
+      }
+    };
 
-import React from "react";
-import {
-  useReactTable,
-  getCoreRowModel,
-  getSortedRowModel,
-  flexRender
-} from "@tanstack/react-table";
+    loadCSV();
+  }, [csvPath]);
 
+  const handleSort = (key) => {
+    let direction = 'asc';
+    if (sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
+    }
+    setSortConfig({ key, direction });
+  };
 
-// Convert Roman numerals to integers for sorting
-const romanToInt = (roman) => {
-  const map = {I:1, V:5, X:10, L:50, C:100, D:500, M:1000};
-  let total = 0;
-  let prev = 0;
+  const sortedData = [...data].sort((a, b) => {
+    if (!sortConfig.key) return 0;
 
-  roman.split("").reverse().forEach(char => {
-    const value = map[char];
-    if (value < prev) total -= value;
-    else total += value;
-    prev = value;
+    const aVal = a[sortConfig.key];
+    const bVal = b[sortConfig.key];
+
+    // Handle nulls - always put at end
+    if (aVal == null && bVal == null) return 0;
+    if (aVal == null) return 1;
+    if (bVal == null) return -1;
+
+    // Compare values
+    let comparison = 0;
+    if (typeof aVal === 'number' && typeof bVal === 'number') {
+      comparison = aVal - bVal;
+    } else {
+      comparison = String(aVal).localeCompare(String(bVal));
+    }
+
+    return sortConfig.direction === 'asc' ? comparison : -comparison;
   });
-  return total;
-};
 
-export default function SortableResourceTable({ data }) {
-    const columns = [
-        {
-          header: "System / Planet",
-          accessorKey: "systemPlanet",
-          sortingFn: (a, b) =>
-            romanToInt(a.original.planet) - romanToInt(b.original.planet),
-        },
-        { header: "Type", accessorKey: "type" },
-        { header: "Aqueous Liquids", accessorKey: "aqueousLiquids", sortingFn: numericSortWithNulls },
-        { header: "Autotrophs", accessorKey: "autotrophs", sortingFn: numericSortWithNulls },
-        { header: "Base Metals", accessorKey: "baseMetals", sortingFn: numericSortWithNulls },
-        { header: "Carbon Compounds", accessorKey: "carbonCompounds", sortingFn: numericSortWithNulls },
-        { header: "Complex Organisms", accessorKey: "complexOrganisms", sortingFn: numericSortWithNulls },
-        { header: "Felsic Magma", accessorKey: "felsicMagma", sortingFn: numericSortWithNulls },
-        { header: "Heavy Metals", accessorKey: "heavyMetals", sortingFn: numericSortWithNulls },
-        { header: "Ionic Solutions", accessorKey: "ionicSolutions", sortingFn: numericSortWithNulls },
-        { header: "Micro Organisms", accessorKey: "microOrganisms", sortingFn: numericSortWithNulls },
-        { header: "Noble Gas", accessorKey: "nobleGas", sortingFn: numericSortWithNulls },
-        { header: "Noble Metals", accessorKey: "nobleMetals", sortingFn: numericSortWithNulls },
-        { header: "Non-CS Crystals", accessorKey: "nonCsCrystals", sortingFn: numericSortWithNulls },
-        { header: "Planktic Colonies", accessorKey: "plankticColonies", sortingFn: numericSortWithNulls },
-        { header: "Reactive Gas", accessorKey: "reactiveGas", sortingFn: numericSortWithNulls },
-        { header: "Suspended Plasma", accessorKey: "suspendedPlasma", sortingFn: numericSortWithNulls },
-      ];
+  if (loading) return <div>Loading data...</div>;
+  if (error) return <div style={{ color: 'red' }}>Error: {error}</div>;
+  if (data.length === 0) return <div>No data available</div>;
 
-  const table = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel()
-  });
+  const columns = Object.keys(data[0]);
 
   return (
     <table style={{ width: "100%", borderCollapse: "collapse" }}>
       <thead>
-        {table.getHeaderGroups().map(hg => (
-          <tr key={hg.id}>
-            {hg.headers.map(header => (
-              <th
-                key={header.id}
+        <tr>
+          {columns.map(col => (
+            <th
+              key={col}
+              onClick={() => handleSort(col)}
+              style={{
+                cursor: "pointer",
+                borderBottom: "1px solid #ccc",
+                padding: "8px 0px",
+                verticalAlign: "bottom",
+                textAlign: "center",
+                whiteSpace: "nowrap",
+                height: "165px",
+                backgroundColor: sortConfig.key === col ? "#127250" : "transparent"
+              }}
+            >
+              <div
                 style={{
-                  cursor: "pointer",
-                  borderBottom: "1px solid #ccc",
-                  padding: "8px 0px",
-                  verticalAlign: "bottom", // aligns rotated text nicely
-                  textAlign: "center",
-                  whiteSpace: "nowrap",
-                  height: "165px" // give space for rotation
+                  transform: "rotate(-90deg)",
+                  width: "40px",
+                  margin: "10 auto",
+                  padding: "3px",
+                  transformOrigin: "bottom middle",
+                  display: "inline-block"
                 }}
-                onClick={header.column.getToggleSortingHandler()}
               >
-                <div
-                  style={{
-                    transform: "rotate(-90deg)",
-                    width: "40px",
-                    margin: "10 auto",
-                    padding: "3px",
-                    transformOrigin: "bottom middle",
-                    display: "inline-block"
-                  }}
-                >
-                  {flexRender(header.column.columnDef.header, header.getContext())}
-                  {{
-                    asc: " ▲",
-                    desc: " ▼"
-                  }[header.column.getIsSorted()] ?? ""}
-                </div>
-              </th>
-            ))}
-          </tr>
-        ))}
+                {col}
+                {sortConfig.key === col && (
+                  <span>{sortConfig.direction === 'asc' ? ' ▲' : ' ▼'}</span>
+                )}
+              </div>
+            </th>
+          ))}
+        </tr>
       </thead>
       <tbody>
-        {table.getRowModel().rows.map(row => (
-          <tr key={row.id}>
-            {row.getVisibleCells().map(cell => (
-              <td key={cell.id} style={{ padding: "4px 8px", textAlign: "center" }}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+        {sortedData.map((row, idx) => (
+          <tr key={idx}>
+            {columns.map(col => (
+              <td
+                key={`${idx}-${col}`}
+                style={{ padding: "4px 8px", textAlign: "center", borderBottom: "1px solid #eee" }}
+              >
+                {row[col] === null ? '' : row[col]}
               </td>
             ))}
           </tr>
@@ -124,5 +137,4 @@ export default function SortableResourceTable({ data }) {
       </tbody>
     </table>
   );
-  
 }
