@@ -49,7 +49,7 @@ This is an incredible opportunity and I'm very excited for what we will be about
 ## How do we get there?
 
 1. Move all of your assets from R-2R0G to Torrinos
-2. Either repackage and smash the rigs, then set courier contracts up to DECOY STONKS at 1,200 isk/m3 (That's the return journey cost I'm afraid!)
+2. Repackage your assets and courier contract up to DECOY STONKS at 1,200 isk/m3 (That's the return journey cost I'm afraid!) to `T8H-66 - DECOY` (Or wait for a capital move op in a few days)
 3. Set a jump clone in Torrinos and Tartoken whilst your ships are still there. We will move caps later
 4. Travel to our new Fort!
 
