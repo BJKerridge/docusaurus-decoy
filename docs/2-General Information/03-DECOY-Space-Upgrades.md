@@ -23,7 +23,9 @@ The home of DECOY is the Fortizar [T8H-66](https://evemaps.dotlan.net/map/Querio
 
 ## Industry Facilities
 
-We have 3 Raitarus in R-2R0G with Material Efficiency Rigs:
+### T8H-66 - DECOY
+- [Blueprint Copy Optimization](https://everef.net/types/43729) - 42% reduction in Blueprint Copy times
+- [Invention Optimization](https://everef.net/types/43722) - 42% reduction in Invention times
 
 ### T8H-66 - zFuel + Equip
 - [Ammunition](https://everef.net/types/37158) → T1/T2 ammo, charges, scripts.
@@ -40,8 +42,6 @@ We have 3 Raitarus in R-2R0G with Material Efficiency Rigs:
 - [Advanced Large Ship](https://everef.net/types/43862) → T2 Battleships + JF's
 - [Advanced Component](https://everef.net/types/43867) → T2 Cap Components, T1 Battleship Components, Data Interfaces + T3 Components
 
-### Reprocessor + Reactor
-
 ### T8H-66 - zAthanor
 - [Asteroid Ore Grading Processor](https://everef.net/types/46634) → Asteroid Belt Ore
 - [Ice Grading Processor](https://everef.net/types/46636) → Ice Belt Ore
@@ -49,7 +49,7 @@ We have 3 Raitarus in R-2R0G with Material Efficiency Rigs:
 
 ### Capital Manufacturing
 
-Use a LowSec NPC station in range of R-2R0G after building your capital components here
+Use a LowSec NPC station in range of T8H-66 after building your capital components here
 
 ---
 
