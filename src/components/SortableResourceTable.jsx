@@ -22,6 +22,20 @@ export default function SortableResourceTable({ csvPath = '/data/pi-planets.csv'
           skipEmptyLines: true,
           dynamicTyping: true,
           complete: (results) => {
+            // Convert Roman numerals to integers for sorting
+            const romanToInt = (roman) => {
+              const map = {I:1, V:5, X:10, L:50, C:100, D:500, M:1000};
+              let total = 0;
+              let prev = 0;
+              roman.split("").reverse().forEach(char => {
+                const value = map[char];
+                if (value < prev) total -= value;
+                else total += value;
+                prev = value;
+              });
+              return total;
+            };
+
             // Convert empty strings to null
             const transformed = results.data.map(row => {
               const newRow = {};
@@ -71,7 +85,39 @@ export default function SortableResourceTable({ csvPath = '/data/pi-planets.csv'
     if (typeof aVal === 'number' && typeof bVal === 'number') {
       comparison = aVal - bVal;
     } else {
-      comparison = String(aVal).localeCompare(String(bVal));
+      // Check if this is a planet name column (contains " - " and Roman numerals)
+      const aStr = String(aVal);
+      const bStr = String(bVal);
+      
+      if (aStr.includes(' - ') && bStr.includes(' - ')) {
+        const aParts = aStr.split(' - ');
+        const bParts = bStr.split(' - ');
+        
+        // Compare system names first
+        const systemComp = aParts[0].localeCompare(bParts[0]);
+        if (systemComp !== 0) {
+          comparison = systemComp;
+        } else {
+          // Same system, compare by Roman numeral
+          const aRoman = aParts[1] || '';
+          const bRoman = bParts[1] || '';
+          const romanToInt = (roman) => {
+            const map = {I:1, V:5, X:10, L:50, C:100, D:500, M:1000};
+            let total = 0;
+            let prev = 0;
+            roman.split("").reverse().forEach(char => {
+              const value = map[char];
+              if (value < prev) total -= value;
+              else total += value;
+              prev = value;
+            });
+            return total;
+          };
+          comparison = romanToInt(aRoman) - romanToInt(bRoman);
+        }
+      } else {
+        comparison = aStr.localeCompare(bStr);
+      }
     }
 
     return sortConfig.direction === 'asc' ? comparison : -comparison;
@@ -114,7 +160,7 @@ export default function SortableResourceTable({ csvPath = '/data/pi-planets.csv'
               >
                 {col}
                 {sortConfig.key === col && (
-                  <span>{sortConfig.direction === 'asc' ? ' ▲' : ' ▼'}</span>
+                  <span>{sortConfig.direction === 'asc' ? ' ▶' : ' ◀'}</span>
                 )}
               </div>
             </th>
