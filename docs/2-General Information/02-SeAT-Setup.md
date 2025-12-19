@@ -31,6 +31,21 @@ Once you've registered your pilots on SeAT, select 'Connector' and 'Identities' 
 
 ---
 
+### DECOY - Mumble Setup
+
+In SeAT, access [Mumble](https://seat.xdecoyx.com/mumble).
+
+Click 'Connect', and Mumble should open up and connect you automatically to our server.
+
+![Mumble Setup](02-SeAT-Mumble.png)
+
+**If it asks you for a password** - reload the [Mumble](https://seat.xdecoyx.com/mumble) page and click the eye symbol and copy the password to your clipboard, THEN hit connect.
+
+Open the Mumble application and connect with the details visible on the screen (ensure your username as the [ALLIANCE TICKER]!). Paste your password and you're in!
+
+
+---
+
 ### Other Services
 
 We have access to Mumble/Discord for other alliances too. Reach out to BJK directly for this information.
