@@ -12,8 +12,8 @@ The home of DECOY is the Fortizar [T8H-66](https://evemaps.dotlan.net/map/Querio
 |-|-|-|-|-|-|-|-|
 |A2-V27|-0.39|Fort|-|3|-|-|Ice|
 |O3L-95|-0.37|Astra|-|1|-|Nocxium 2|-|
-|A3-LOG|-0.26|Astra|-|1|-|Mexallon 2|-|
-|T8H-66|-0.31|Fort|-|1|-|Megacyte 2|-|
+|A3-LOG|-0.26|Astra|-|1|-|Megacyte 2|-|
+|T8H-66|-0.31|Fort|-|1|-|Zydrine 1|-|
 |7V-KHW|-0.17|Astra|-|1|-|Isogen 2|-|
 |0-WT2D|-0.12|Astra|-|1|-|Zydrine 2|-|
 
