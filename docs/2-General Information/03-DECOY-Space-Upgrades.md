@@ -10,6 +10,19 @@ The home of DECOY is the Fortizar [T8H-66](https://evemaps.dotlan.net/map/Querio
 
 |System|Sec|Citadel|Minor|Major|Explo|Ore|Other|
 |-|-|-|-|-|-|-|-|
+|K-6K16|-0.43|Fort |-|2|-|Zydrine 1|Ansi|
+|F-TE1T|-0.73|Astra|-|3|3|-|Ice|
+|J-LPX7|-0.69|Astra|-|3|-|Nocxium 2|-|
+|QY6-RK|-0.60|Astra|-|1|-|-|Ice|
+|W-KQPI|-0.59|Astra|-|3|-|-|Ice|
+|PUIG-F|-0.67|Astra|-|1|-|Megacyte 2|-|
+|0-HDC8|-0.72|Astra|-|3|-|-|Ice + A0|
+|SVM-3K|-0.63|Astra|-|1|-|Isogen 2|-|
+
+We also hold sov in a constellation in Querious:
+
+|System|Sec|Citadel|Minor|Major|Explo|Ore|Other|
+|-|-|-|-|-|-|-|-|
 |A2-V27|-0.39|Fort|-|3|-|-|Ice|
 |O3L-95|-0.37|Astra|-|1|-|Nocxium 2|-|
 |A3-LOG|-0.26|Astra|-|1|-|Megacyte 2|-|
@@ -23,33 +36,22 @@ The home of DECOY is the Fortizar [T8H-66](https://evemaps.dotlan.net/map/Querio
 
 ## Industry Facilities
 
-### T8H-66 - DECOY
+### K-6K16 - Under New Management (Fortizar)
 - [Blueprint Copy Optimization](https://everef.net/types/43729) - 42% reduction in Blueprint Copy times
 - [Invention Optimization](https://everef.net/types/43722) - 42% reduction in Invention times
 
-### T8H-66 - zFuel + Equip
-- [Ammunition](https://everef.net/types/37158) → T1/T2 ammo, charges, scripts.
-- [Equipment](https://everef.net/types/43920) → Ship modules, weapons, rigs.
+### K-6K16 - WTB Sotiyo
+- [Advanced Component](https://everef.net/types/43867) → T2 Cap Components, T1 Battleship Components, Data Interfaces + T3 Components
+- [Basic Large Ship](https://everef.net/types/43732) → T1 + Faction Battleships, Orca, Bowhead
 - [Structure](https://everef.net/types/43875) → Structures, structure modules, structure rigs.
 
-### T8H-66 - zT1
-- [Basic Medium Ship](https://everef.net/types/37146) → T1 + Faction Cruisers, Battlecruisers, Industrials, Mining Barges
-- [Basic Large Ship](https://everef.net/types/43732) → T1 + Faction Battleships, Orca, Bowhead
-- [Basic Capital Component](https://everef.net/types/43870) → T1 Capital Components
-
-### T8H-66 - zT2
-- [Advanced Medium Ship](https://everef.net/types/43858) → T2/T3 Cruisers, Battlecruisers and Subsystems
-- [Advanced Large Ship](https://everef.net/types/43862) → T2 Battleships + JF's
-- [Advanced Component](https://everef.net/types/43867) → T2 Cap Components, T1 Battleship Components, Data Interfaces + T3 Components
-
-### T8H-66 - zAthanor
-- [Asteroid Ore Grading Processor](https://everef.net/types/46634) → Asteroid Belt Ore
-- [Ice Grading Processor](https://everef.net/types/46636) → Ice Belt Ore
-- [Composite Reactor Material Efficiency](https://everef.net/types/46486) → T2 Composite Reactions
+### K-6K16 - TATARA
+- [Reactor Efficiency](https://everef.net/types/46496) → Reactions
+- [Reprocessing Monitor](https://everef.net/types/46639) → Reprocessing
 
 ### Capital Manufacturing
 
-Use a LowSec NPC station in range of T8H-66 after building your capital components here
+Use an NPC station in range of K-6K16 after building your capital components here.
 
 ---
 

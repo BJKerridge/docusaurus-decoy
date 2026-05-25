@@ -8,25 +8,33 @@ description: Buyback & Market Seeding program
 
 # Hangar Expectations
 
-## T8H-66 - DECOY
-This is our main stager where deathclones should live. You should have:
+## K-6K16
+This is our main stager where deathclones should live. You should have something for the following comps:
 
 - Mains:
-  - Leshak
-  - Machariel
+  - Carrier (Thanatos/Archon)
+  - Leshak Fleet (Leshak, Armageddon Navy, Zarmazd)
+  - Machariel (Machariel, Barghest, Stormbringer)
+  - Oracle (Oracle, Vedmak)
+  - Tornado (Tornado, Vigil, Bifrost)
+  - Vedmak
   - Exequror Navy Issue
-  - Omen Navy Issue
-  - Flycatcher
+  - Omen Navy Issue (Omen Navy Issue, Vigil, Bifrost)
+  - Flycatcher (Flycatcher, Vigil, Bifrost)
+  - Torpedo Bomber
+  - Bombing Bomber
   - Hyperspatial Battleship (HD)
   - Hyperspatial Cruiser/BC (HD)
   - ESS Defence Ship (HD)
 - Alts:
+  - Carrier OR Dreadnought
   - Tackle Raptor
   - Sabre
   - Bombing Bomber
   - Ishtar
   - Hulk/Mackinaw/Porpoise
   - Sigil
+
 
 ---
 
@@ -41,15 +49,6 @@ This is the main stager of OnlyFleets and those with MG Amulet/Nirvana sets may 
   - Mid-Grade Nirvana
   - Mid-Grade Amulet
 
----
-
-## Torrinos V - Moon 5 - Lai Dai Corporation Factory 
-Pure Blind is an overextention from WinterCo, and we should be able to cause some damage to them with a jump clone deployment. This ships will all be handouts.
-
-- Mains
-  - Omen Navy Issue
-  - Flycatcher
-  - Tornado
 
 ---
 
