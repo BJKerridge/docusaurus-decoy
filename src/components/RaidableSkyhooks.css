@@ -1,0 +1,219 @@
+.skyhook-dashboard-wrapper {
+    color: #c8d0e0;
+    background: #0b0c10;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #1e2330;
+    font-family: 'Exo 2', sans-serif;
+  }
+  .loading-panel {
+    color: #8a94a8;
+    padding: 20px;
+    text-align: center;
+    background: #111318;
+    border: 1px solid #1e2330;
+    border-radius: 6px;
+  }
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .header-actions { display: flex; gap: 8px; align-items: stretch; }
+  .clock-panel {
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+    font-size: 13px;
+    color: #00ff99;
+    background: #181b22;
+    border: 1px solid #1e2330;
+    padding: 6px 14px;
+    border-radius: 4px;
+  }
+  .clock-label { display: block; font-size: 10px; color: #5a6278; margin-bottom: 2px; line-height: 1; }
+  .clock-time { line-height: 1.2; }
+  .data-panel { border-radius: 6px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  tr { border-bottom: 1px solid #1e2330; }
+  th {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #5a6278;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #1e2330;
+    cursor: pointer;
+    user-select: none;
+  }
+  th:hover { color: #00c8ff; }
+  td { padding: 10px 14px; border-bottom: 1px solid #1e2330; font-size: 13px; vertical-align: middle; }
+  h4 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #00c8ff;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(0,200,255,0.3);
+  }
+  .mono-text { font-family: 'Share Tech Mono', monospace; }
+  .muted { color: #5a6278; }
+  .soft-text { color: #8a94a8; }
+  .header-subtitle { font-size: 12px; color: #5a6278; margin-top: 4px; }
+  .planet-highlight { color: #fff; font-family: 'Share Tech Mono', monospace; font-weight: 600; font-size: 14px; display: block; }
+  .reagent-cell { display: flex; align-items: center; gap: 8px; font-family: 'Share Tech Mono', monospace; font-size: 12px; }
+  .reagent-icon { width: 22px; height: 22px; border-radius: 3px; }
+  .flex-center { display: flex; align-items: center; }
+  .gap-8 { gap: 8px; }
+  .badge { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 2px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .badge-wd { background: rgba(0,200,255,0.1); color: #00c8ff; border: 1px solid rgba(0,200,255,0.25); }
+  .badge-sd { background: rgba(0,255,153,0.1); color: #00ff99; border: 1px solid rgba(0,255,153,0.25); }
+  .badge-con { background: rgba(255,148,0,0.1); color: #ff9900; border: 1px solid rgba(255,148,0,0.25); }
+  .distance-bar { width: 60px; height: 4px; background: #181b22; border-radius: 2px; overflow: hidden; }
+  .distance-fill { height: 100%; border-radius: 2px; }
+  .s-open { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; color: #00ff99; }
+  .s-open::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #00ff99; box-shadow: 0 0 6px #00ff99; }
+  .status-soon { font-size: 11px; font-weight: 600; color: #ff9900; }
+  .status-closed { font-size: 11px; color: #5a6278; }
+  .footer-row { display: flex; justify-content: space-between; font-size: 11px; color: #5a6278; margin-top: 10px; }
+  .refresh-btn { display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600; background: #181b22; color: #00c8ff; border: 1px solid #1e2330; width: 44px; border-radius: 4px; cursor: pointer; transition: all 0.15s ease-in-out; }
+  .refresh-btn:hover:not(:disabled) { border-color: #00c8ff; background: rgba(0,200,255,0.05); box-shadow: 0 0 8px rgba(0,200,255,0.15); }
+  .refresh-btn:disabled { color: #5a6278; cursor: not-allowed; }
+  .spinning { animation: spin-loader 1s linear infinite; }
+  @keyframes spin-loader { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
+  .toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    background: #181b22;
+    color: #00c8ff;
+    border: 1px solid #1e2330;
+    padding: 0 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Share Tech Mono', monospace;
+    transition: all 0.15s ease-in-out;
+  }
+  .toggle-btn:hover {
+    border-color: #00c8ff;
+    background: rgba(0, 200, 255, 0.05);
+  }
+  .toggle-btn.active {
+    background: rgba(0, 200, 255, 0.2);
+    border-color: #00c8ff;
+    color: #fff;
+    box-shadow: 0 0 8px rgba(0, 200, 255, 0.2);
+  }
+  th:first-child, 
+td:first-child {
+  width: 120px;
+  max-width: 120px;
+  min-width: 120px;
+  box-sizing: border-box;
+}
+
+.planet-highlight {
+  color: #fff;
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 600;
+  font-size: 14px;
+  display: block;
+  
+  /* Prevent layout breaking on massive system/planet names */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Lock the specific column cell boundaries cleanly */
+.region-cell-fixed {
+  width: 180px;
+  max-width: 180px;
+  min-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+/* Match the exact table layout geometry across the header element alignment path */
+th.region-header {
+  width: 180px;
+  max-width: 180px;
+  min-width: 180px;
+  box-sizing: border-box;
+}
+
+/* Ensure child target layout text spans scale down if out-of-boundary overflow limits trigger */
+.region-cell-fixed .badge {
+  display: inline-block;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Lock the distance data cell width constraints */
+.distance-cell-fixed {
+  width: 155px;
+  max-width: 155px;
+  min-width: 155px;
+  box-sizing: border-box;
+}
+
+/* Match the exact geometry on the table column header */
+th.distance-header {
+  width: 155px;
+  max-width: 155px;
+  min-width: 155px;
+  box-sizing: border-box;
+}
+
+/* Optional: Ensure the inner distance bar wrapper stretches nicely within the new 155px boundary */
+.distance-cell-fixed .flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.distance-cell-fixed .distance-bar {
+  flex-grow: 1;
+  margin-right: 8px;
+}
+/* Pushes the light-year readout text to line up cleanly when the bar is hidden */
+.text-right-fallback {
+  margin-left: auto;
+  text-align: right;
+  width: 100%;
+}
+
+/* Lock the status data cell geometry */
+.status-cell-fixed {
+  width: 80px;
+  max-width: 80px;
+  min-width: 80px;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Match the geometry on the table column header */
+th.status-header {
+  width: 80px;
+  max-width: 80px;
+  min-width: 80px;
+  box-sizing: border-box;
+  text-align: center;
+}
