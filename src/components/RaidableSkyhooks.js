@@ -61,11 +61,13 @@ export default function RaidableSkyhooks() {
       const data = await fetch('https://esi.evetech.net/skyhooks/raidable/', {
         headers: { 'X-Compatibility-Date': '2026-05-19', 'Accept': 'application/json' }
       }).then(r => r.ok ? r.json() : { skyhooks: [] });
-
       setRawSkyhooks(data.skyhooks || []);
       setState(p => ({ ...p, lastFetched: new Date().toUTCString(), loading: false }));
     } catch (e) {
-      setState(p => ({ ...p, stage: `ESI Link Failure: ${e.message}`, refreshing: false }));
+      setState(p => ({ ...p, stage: `ESI Link Failure: ${e.message}`, loading: false }));
+    } finally {
+      // This ensures the spinner stops even if the fetch fails
+      setState(p => ({ ...p, refreshing: false }));
     }
   };
 
@@ -141,10 +143,17 @@ export default function RaidableSkyhooks() {
     const targetMatch = targetMap[planetMeta.sid];
     if (!targetMatch && !showAll) return null;
 
+    // 1. Resolve naming and UI parameters
     const displayRegionName = targetMatch ? REGION_LABELS[targetMatch.region] : planetMeta.r;
     const badgeClassKey = targetMatch ? targetMatch.region : 'unknown';
     const colorBarKey = targetMatch ? targetMatch.region : 'unknown';
 
+    // 2. Resolve URL parameters
+    const urlRegionName = (planetMeta.r || '').replace(/\s+/g, '_');
+    const urlSystemName = planetMeta.sn;
+    const urlAnchorType = (REAGENT_MAP[planetMeta.pt]?.type || '').toLowerCase();
+
+    // 3. Distance calculation
     let lyDistance = targetMatch ? targetMatch.ly : null;
     if (!targetMatch && originCoords && planetMeta.p) {
       const dx = planetMeta.p.x - originCoords.x;
@@ -158,6 +167,9 @@ export default function RaidableSkyhooks() {
       name: planetMeta.sn,
       ly: lyDistance,
       regionName: displayRegionName,
+      urlRegionName,
+      urlSystemName,
+      urlAnchorType,
       badgeClass: REGION_CLASSES[badgeClassKey],
       barColor: BAR_COLORS[colorBarKey],
       hook,
@@ -223,7 +235,18 @@ export default function RaidableSkyhooks() {
               const rMeta = REAGENT_MAP[r.planetTypeId];
               return (
                 <tr key={i}>
-                  <td><span className="planet-highlight" title={r.planetStr}>{r.planetStr}</span></td>
+                  <td>
+                    <a
+                      href={`https://evemaps.dotlan.net/map/${r.urlRegionName}/${r.urlSystemName}#${r.urlAnchorType}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="skyhook-link"
+                    >
+                      <span className="planet-highlight" title={`Open DOTLAN for ${r.planetStr}`}>
+                        {r.planetStr}
+                      </span>
+                    </a>
+                  </td>
                   <td>
                     {rMeta ? (
                       <div className="reagent-cell" style={{ color: rMeta.color }}>

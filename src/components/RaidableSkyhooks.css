@@ -87,7 +87,16 @@
   .refresh-btn { display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600; background: #181b22; color: #00c8ff; border: 1px solid #1e2330; width: 44px; border-radius: 4px; cursor: pointer; transition: all 0.15s ease-in-out; }
   .refresh-btn:hover:not(:disabled) { border-color: #00c8ff; background: rgba(0,200,255,0.05); box-shadow: 0 0 8px rgba(0,200,255,0.15); }
   .refresh-btn:disabled { color: #5a6278; cursor: not-allowed; }
-  .spinning { animation: spin-loader 1s linear infinite; }
+  .spinning {
+    display: inline-block;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
   @keyframes spin-loader { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
   .toggle-btn {
     display: flex;
