@@ -112,20 +112,22 @@ export default function RaidableSkyhooks() {
 
   // Helper utility to render countdowns for ongoing and upcoming raid events
   const renderStatusCell = (startTs, endTs) => {
+    // 1. Currently active window
     if (nowTs >= startTs && nowTs < endTs) {
       const timeLeftMs = endTs - nowTs;
       const hours = Math.floor(timeLeftMs / 3600000);
       const mins = Math.floor((timeLeftMs % 3600000) / 60000);
-
-      // Dynamic rendering layout switcher based on remaining duration thresholds
-      const timeStr = hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
-      return <span className="s-open">{timeStr}</span>;
+      return <span className="s-open">{hours > 0 ? `${hours}h ${mins}m` : `${mins}m`}</span>;
     }
-
-    if (startTs > nowTs && (startTs - nowTs) < 3600000) {
-      return <span className="status-soon">In {Math.round((startTs - nowTs) / 60000)}m</span>;
+    
+    // 2. Upcoming windows: Always show the countdown, even beyond 60 minutes
+    if (startTs > nowTs) {
+      const diff = startTs - nowTs;
+      const hours = Math.floor(diff / 3600000);
+      const mins = Math.floor((diff % 3600000) / 60000);
+      return <span className="status-soon">In {hours > 0 ? `${hours}h ${mins}m` : `${mins}m`}</span>;
     }
-
+    
     return <span className="status-closed">CLOSED</span>;
   };
 
