@@ -1,0 +1,453 @@
+---
+sidebar_position: 3
+pagination_next: null
+pagination_prev: null
+title: ADM - System Activity
+description: ADM
+---
+
+import React, { useEffect, useState, useRef } from 'react';
+import { systems, CLUSTERS } from '@site/src/data/systemsData';
+
+export const SovereigntyMap = () => {
+  const [sovData, setSovData]     = useState({});
+  const [structData, setStructData] = useState({});
+  const [activeCluster, setActiveCluster] = useState('delve');
+  const [tooltip, setTooltip]     = useState(null);
+  const containerRef              = useRef(null);
+  const tooltipRef                = useRef(null);
+
+  // Fixed canvas dimensions — never changes on cluster switch
+  const CANVAS_W = 900;
+  const CANVAS_H = 550;
+
+  useEffect(() => {
+  const fetchAll = async () => {
+    try {
+  const response = await fetch('https://esi.evetech.net/sovereignty/systems', {
+    headers: {
+      'Accept': 'application/json',
+      'X-Compatibility-Date': '2026-05-19'
+    }
+  });
+
+  const data = await response.json();
+  
+  // LOG the actual type of data to the console
+  console.log("Type of data received:", typeof data);
+  console.log("Actual data content:", data);
+
+  // Guard: Only process if it is actually an array
+  if (data && Array.isArray(data.solar_systems)) {
+  const structBySystemId = {};
+  
+  data.solar_systems.forEach(s => {
+    const id = s.solar_system_id;
+    // Only process if there is a claim to avoid errors on NPC space
+    if (s.claim?.alliance?.development) {
+      if (
+        !structBySystemId[id] ||
+        (s.claim.alliance?.development?.activity_defense_multiplier ?? 0) >
+        (structBySystemId[id].claim.alliance?.development?.activity_defense_multiplier ?? 0)
+      ) {
+        structBySystemId[id] = s;
+      }
+    }
+  });
+    setStructData(structBySystemId);
+  } else {
+    console.error("Expected an array from ESI, but got:", data);
+  }
+} catch (error) {
+  console.error("Fetch failed:", error);
+}
+  };
+  
+  fetchAll();
+}, []);
+
+  const admColor = adm => {
+    if (!adm)    return '#6b7280';
+    if (adm >= 6) return '#22c55e';
+    if (adm >= 5) return '#84cc16';
+    if (adm >= 4) return '#eab308';
+    if (adm >= 3) return '#f97316';
+    return '#ef4444';
+  };
+
+  // Draw a partial arc around a node.
+  // side: 'left' = 180°–360° sweep (left half), 'right' = 0°–180° (right half)
+  // level: 0–5, proportion of that half-circle to fill
+  // Replace indexArc with this segment generator
+const arcSegments = (cx, cy, side, level) => {
+  const arcRadius = 35;
+  const N = 5;
+  const TOTAL_SWEEP = 140;  // degrees each side covers
+  const GAP_DEG = 15;        // gap between individual segments
+  const segSweep = (TOTAL_SWEEP - GAP_DEG * (N - 1)) / N;
+
+  const toRad = deg => (deg * Math.PI) / 180;
+
+  const segments = [];
+  for (let i = 0; i < N; i++) {
+    const filled = i < level;
+    let startDeg, endDeg;
+
+    if (side === 'left') {
+      startDeg = 110 + i * (segSweep + GAP_DEG);
+      endDeg   = startDeg + segSweep;
+    } else {
+      startDeg = 70 - i * (segSweep + GAP_DEG);
+      endDeg   = startDeg - segSweep;
+    }
+
+    const x1 = cx + arcRadius * Math.cos(toRad(startDeg));
+    const y1 = cy + arcRadius * Math.sin(toRad(startDeg));
+    const x2 = cx + arcRadius * Math.cos(toRad(endDeg));
+    const y2 = cy + arcRadius * Math.sin(toRad(endDeg));
+    const sweep = endDeg > startDeg ? 1 : 0;
+
+    segments.push({
+      d: `M ${x1.toFixed(2)} ${y1.toFixed(2)} A ${arcRadius} ${arcRadius} 0 0 ${sweep} ${x2.toFixed(2)} ${y2.toFixed(2)}`,
+      filled,
+    });
+  }
+  return segments;
+};
+
+  const visibleSystems = activeCluster === 'all'
+    ? systems
+    : systems.filter(s => s.clusterId === activeCluster);
+
+  const xs = visibleSystems.map(s => s.x);
+  const ys = visibleSystems.map(s => s.y);
+  const minX = Math.min(...xs), maxX = Math.max(...xs);
+  const minY = Math.min(...ys), maxY = Math.max(...ys);
+
+  const PAD    = 70;
+  const nodeR  = 25;
+  const arcR   = nodeR + 9;  // arc sits outside the node circle
+  const scaleX = xs.length > 1 ? (CANVAS_W - PAD * 2) / (maxX - minX || 1) : 1;
+  const scaleY = ys.length > 1 ? (CANVAS_H - PAD * 2) / (maxY - minY || 1) : 1;
+  const scale  = Math.min(scaleX, scaleY); // uniform scale to fit both axes
+
+  // Centre the layout within the fixed canvas
+  const dataW  = (maxX - minX) * scale;
+  const dataH  = (maxY - minY) * scale;
+  const offsetX = (CANVAS_W - dataW) / 2;
+  const offsetY = (CANVAS_H - dataH) / 2;
+
+  const tx = x => offsetX + (x - minX) * scale;
+  const ty = y => offsetY + (y - minY) * scale;
+
+  const sysByName = {};
+  visibleSystems.forEach(s => { sysByName[s.system] = s; });
+
+  const edges = [];
+  const drawn = new Set();
+  visibleSystems.forEach(s => {
+    (s.links || []).forEach(tname => {
+      const t = sysByName[tname];
+      if (!t) return;
+      const key = [s.system, tname].sort().join('|');
+      if (drawn.has(key)) return;
+      drawn.add(key);
+      edges.push({ x1: tx(s.x), y1: ty(s.y), x2: tx(t.x), y2: ty(t.y) });
+    });
+  });
+
+  const allClusters = [...CLUSTERS];
+
+  // Tooltip position: clamp so it always stays inside the container
+  const handleMouseEnter = (e, s, mapEntry, structEntry, adm, color, milIdx, indIdx) => {
+    const svgEl    = e.currentTarget.ownerSVGElement;
+    const svgRect  = svgEl.getBoundingClientRect();
+    const contRect = containerRef.current.getBoundingClientRect();
+
+    // Raw position relative to container
+    let x = e.clientX - contRect.left + 14;
+    let y = e.clientY - contRect.top  - 14;
+
+    // We'll clamp after render via useEffect on tooltip change,
+    // but set an initial estimate here. Tooltip is ~200×130px.
+    const TW = 210, TH = 140;
+    if (x + TW > contRect.width  - 4) x = (e.clientX - contRect.left) - TW - 14;
+    if (y + TH > contRect.height - 4) y = (e.clientY - contRect.top)  - TH - 14;
+    if (x < 4) x = 4;
+    if (y < 4) y = 4;
+
+    setTooltip({ s, mapEntry, structEntry, adm, color, milIdx, indIdx, x, y });
+  };
+
+  return (
+    <div style={{ fontFamily: 'var(--ifm-font-family-base)', marginTop: '1.5rem' }}>
+
+      {/* Cluster tabs */}
+      <div style={{ display: 'flex', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
+        {allClusters.map(c => (
+          <button
+            key={c.id}
+            onClick={() => setActiveCluster(c.id)}
+            style={{
+              padding: '5px 16px',
+              borderRadius: 20,
+              border: '1px solid',
+              borderColor: activeCluster === c.id ? 'var(--ifm-color-primary)' : '#334155',
+              background: activeCluster === c.id ? 'var(--ifm-color-primary)' : 'transparent',
+              color: activeCluster === c.id ? '#fff' : '#94a3b8',
+              cursor: 'pointer',
+              fontSize: 13,
+              fontWeight: activeCluster === c.id ? 600 : 400,
+            }}
+          >
+            {c.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Fixed-height canvas container */}
+      <div
+        ref={containerRef}
+        style={{
+          position: 'relative',
+          border: '1px solid #1e293b',
+          borderRadius: 8,
+          overflow: 'hidden',
+          background: '#060910',
+          height: CANVAS_H,
+        }}
+      >
+        <svg
+          width="100%"
+          height={CANVAS_H}
+          viewBox={`0 0 ${CANVAS_W} ${CANVAS_H}`}
+          preserveAspectRatio="xMidYMid meet"
+          style={{ display: 'block' }}
+        >
+          {/* Starfield */}
+          {Array.from({ length: 100 }, (_, i) => (
+            <circle
+              key={i}
+              cx={((i * 173 + i * i * 7) % CANVAS_W)}
+              cy={((i * 113 + i * i * 11) % CANVAS_H)}
+              r={i % 5 === 0 ? 1.2 : 0.5}
+              fill="white"
+              opacity={0.08 + (i % 6) * 0.04}
+            />
+          ))}
+
+          {/* Edges */}
+          {edges.map((e, i) => (
+            <line
+              key={i}
+              x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2}
+              stroke="#1e3a5f"
+              strokeWidth={1.5}
+              strokeDasharray="5 4"
+            />
+          ))}
+
+          {/* Nodes */}
+          {visibleSystems.map(s => {
+            const mapEntry   = sovData[s.solar_system_id];
+            const structEntry = structData[s.solar_system_id];
+            const adm = structEntry?.claim?.alliance?.development?.activity_defense_multiplier ?? null;
+            const color = admColor(adm);
+            const cx = tx(s.x);
+            const cy = ty(s.y);
+            const hasSov = !!structEntry?.claim;
+            const milIdx = structEntry?.claim.alliance.development?.military_level ?? 0;
+            const indIdx = structEntry?.claim.alliance.development?.industrial_level ?? 0;
+
+
+
+            return (
+              <g
+                key={s.solar_system_id}
+                style={{ cursor: 'pointer' }}
+                onMouseEnter={e => handleMouseEnter(e, s, mapEntry, structEntry, adm, color, milIdx, indIdx)}
+                onMouseLeave={() => setTooltip(null)}
+              >
+                {/* Outer glow when sov held */}
+                {hasSov && (
+                  <circle cx={cx} cy={cy} r={arcR + 5} fill={color} opacity={0.07} />
+                )}
+
+                {/* Military index — left, cyan */}
+                {arcSegments(cx, cy, 'left', milIdx).map((seg, i) => (
+                  <path
+                    key={`mil-${i}`}
+                    d={seg.d}
+                    fill="none"
+                    stroke={seg.filled ? '#06b6d4' : '#1e3a5f'}
+                    strokeWidth={6}
+                    strokeLinecap="round"
+                    opacity={seg.filled ? 0.9 : 0.4}
+                  />
+                ))}
+
+                {/* Industry index — right, magenta */}
+                {arcSegments(cx, cy, 'right', indIdx).map((seg, i) => (
+                  <path
+                    key={`ind-${i}`}
+                    d={seg.d}
+                    fill="none"
+                    stroke={seg.filled ? '#c026d3' : '#2d1a3a'}
+                    strokeWidth={6}
+                    strokeLinecap="round"
+                    opacity={seg.filled ? 0.9 : 0.4}
+                  />
+                ))}
+
+                {/* Node core */}
+                <circle cx={cx} cy={cy} r={nodeR} fill={color} stroke="#060910" strokeWidth={2.5} />
+
+                {/* ADM label inside node */}
+                {adm !== null && (
+  <>
+    {/* Outline layer */}
+    <text
+      x={cx} y={cy + 4}
+      textAnchor="middle"
+      fontSize={16}
+      fontWeight="700"
+      fill="none"
+      stroke="#000"
+      strokeWidth={3}
+      strokeLinejoin="round"
+      style={{ pointerEvents: 'none', fontFamily: 'monospace' }}
+    >
+      {adm.toFixed(1)}
+    </text>
+    {/* Main label */}
+    <text
+      x={cx} y={cy + 4}
+      textAnchor="middle"
+      fontSize={16}
+      fontWeight="700"
+      fill="#fff"
+      style={{ pointerEvents: 'none', fontFamily: 'monospace' }}
+    >
+      {adm.toFixed(1)}
+    </text>
+  </>
+)}
+
+                {/* System name below node */}
+                <text
+                  x={cx} y={cy + nodeR + arcR - nodeR + 16}
+                  textAnchor="middle"
+                  fontSize={14}
+                  fill="#94a3b8"
+                  style={{ pointerEvents: 'none' }}
+                >
+                  {s.system}
+                </text>
+              </g>
+            );
+          })}
+        </svg>
+
+        {/* Tooltip — clamped inside the container */}
+        {tooltip && (
+          <div
+            ref={tooltipRef}
+            style={{
+              position: 'absolute',
+              left: tooltip.x,
+              top:  tooltip.y,
+              background: 'rgba(10, 15, 30, 0.96)',
+              border: '1px solid #1e3a5f',
+              borderRadius: 8,
+              padding: '10px 14px',
+              fontSize: 12,
+              color: '#e2e8f0',
+              minWidth: 190,
+              pointerEvents: 'none',
+              zIndex: 20,
+              backdropFilter: 'blur(4px)',
+            }}
+          >
+            <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 8, color: '#f1f5f9' }}>
+              {tooltip.s.system}
+              <span style={{ fontSize: 11, fontWeight: 400, color: '#64748b', marginLeft: 6 }}>
+                {tooltip.s.region}
+              </span>
+            </div>
+
+            {/* ADM row */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+              <span style={{ width: 9, height: 9, borderRadius: '50%', background: tooltip.color, display: 'inline-block', flexShrink: 0 }} />
+              <span style={{ color: '#94a3b8' }}>
+                {tooltip.adm !== null ? `ADM ${tooltip.adm.toFixed(1)}` : 'No sovereignty'}
+              </span>
+            </div>
+
+            {/* Index bars */}
+            {tooltip.structEntry && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                {/* Military */}
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
+                    <span style={{ color: '#67e8f9', fontSize: 11 }}>Military</span>
+                    <span style={{ color: '#67e8f9', fontWeight: 600, fontFamily: 'monospace' }}>{tooltip.milIdx} / 5</span>
+                  </div>
+                  <div style={{ height: 4, borderRadius: 2, background: '#1e293b', overflow: 'hidden' }}>
+                    <div style={{ width: `${(tooltip.milIdx / 5) * 100}%`, height: '100%', background: 'linear-gradient(90deg, #0891b2, #67e8f9)', borderRadius: 2 }} />
+                  </div>
+                </div>
+                {/* Industry */}
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
+                    <span style={{ color: '#e879f9', fontSize: 11 }}>Industry</span>
+                    <span style={{ color: '#e879f9', fontWeight: 600, fontFamily: 'monospace' }}>{tooltip.indIdx} / 5</span>
+                  </div>
+                  <div style={{ height: 4, borderRadius: 2, background: '#1e293b', overflow: 'hidden' }}>
+                    <div style={{ width: `${(tooltip.indIdx / 5) * 100}%`, height: '100%', background: 'linear-gradient(90deg, #9333ea, #e879f9)', borderRadius: 2 }} />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Vulnerability window */}
+            {tooltip.structEntry?.vulnerable_end_time && (
+              <div style={{ marginTop: 8, paddingTop: 8, borderTop: '1px solid #1e293b', color: '#64748b', fontSize: 11 }}>
+                Vuln ends{' '}
+                <span style={{ color: '#94a3b8' }}>
+                  {new Date(tooltip.structEntry.vulnerable_end_time).toUTCString().slice(5, 22)} UTC
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+# Activity Defence Multiplier (ADM)
+
+<SovereigntyMap />
+
+The Activity Defense Multiplier makes a system harder to capture based on activity that happens within it.
+- At ADM 1.0x, we have a 18h vulnerability cycle with a 10 minute capture timer
+- At ADM 6.0x, we have a 3h vulnerability cycle with a 60 minute capture timer
+
+ADM is increased by these three counters:
+- **Strategic Index:** Increases over time by holding sovereignty
+- **Military Index:** Increases by killing NPCs, decreases by 1% per hour
+- **Industry Index:** Increases by mining ores, decreases by 1% per hour
+
+The indexes have levels from 0 to 5, increasing in difficulty.
+
+### Defending IHubs
+
+In order to attack an ihub, a pilot must lock it up and activate an Entosis Link. This will spool up (T1 = 5m, T2 = 2m) and take effect upon its second cycle.
+These can be interrupted, by killing, jamming, or bumping the pilot out of range.
+If no link is active on an ihub (or command node), they will passively repair in favour of the defender.
+
+---
+
+## Live System Map
+
+Current sovereignty and ADM for tracked systems. Data from [EVE ESI](https://esi.evetech.net) — refreshes on page load.
