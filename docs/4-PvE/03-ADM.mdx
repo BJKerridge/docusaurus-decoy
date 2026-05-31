@@ -176,6 +176,8 @@ const arcSegments = (cx, cy, side, level) => {
     if (x < 4) x = 4;
     if (y < 4) y = 4;
 
+    const isOurSov = structEntry?.claim?.alliance?.alliance_id === 99012410;
+
     setTooltip({ s, mapEntry, structEntry, adm, color, milIdx, indIdx, x, y });
   };
 
@@ -274,7 +276,7 @@ const arcSegments = (cx, cy, side, level) => {
                 )}
 
                 {/* Military index — left, cyan */}
-                {arcSegments(cx, cy, 'left', milIdx).map((seg, i) => (
+                {structEntry?.claim?.alliance?.alliance_id === 99012410 && arcSegments(cx, cy, 'left', milIdx).map((seg, i) => (
                   <path
                     key={`mil-${i}`}
                     d={seg.d}
@@ -287,7 +289,7 @@ const arcSegments = (cx, cy, side, level) => {
                 ))}
 
                 {/* Industry index — right, magenta */}
-                {arcSegments(cx, cy, 'right', indIdx).map((seg, i) => (
+                {structEntry?.claim?.alliance?.alliance_id === 99012410 && arcSegments(cx, cy, 'right', indIdx).map((seg, i) => (
                   <path
                     key={`ind-${i}`}
                     d={seg.d}
@@ -300,38 +302,63 @@ const arcSegments = (cx, cy, side, level) => {
                 ))}
 
                 {/* Node core */}
-                <circle cx={cx} cy={cy} r={nodeR} fill={color} stroke="#060910" strokeWidth={2.5} />
+              <defs>
+                {visibleSystems.map(s => (
+                  <clipPath key={`clip-${s.solar_system_id}`} id={`clip-${s.solar_system_id}`}>
+                    <circle cx={tx(s.x)} cy={ty(s.y)} r={nodeR} />
+                  </clipPath>
+                ))}
+              </defs>
 
+              {/* Dark fallback circle underneath in case image fails to load */}
+              <circle cx={cx} cy={cy} r={nodeR} fill="#0f172a" stroke="#060910" strokeWidth={2.5} />
+
+              {/* Alliance logo */}
+              {structEntry?.claim?.alliance?.alliance_id && (
+                <image
+                  href={`https://images.evetech.net/alliances/${structEntry.claim.alliance.alliance_id}/logo?size=64`}
+                  x={cx - nodeR}
+                  y={cy - nodeR}
+                  width={nodeR * 2}
+                  height={nodeR * 2}
+                  opacity={0.7}
+                  clipPath={`url(#clip-${s.solar_system_id})`}
+                  style={{ pointerEvents: 'none' }}
+                />
+              )}
+
+              {/* Ring border over the top */}
+              <circle cx={cx} cy={cy} r={nodeR} fill="none" stroke="#060910" strokeWidth={2.5} />
                 {/* ADM label inside node */}
                 {adm !== null && (
-  <>
-    {/* Outline layer */}
-    <text
-      x={cx} y={cy + 4}
-      textAnchor="middle"
-      fontSize={16}
-      fontWeight="700"
-      fill="none"
-      stroke="#000"
-      strokeWidth={3}
-      strokeLinejoin="round"
-      style={{ pointerEvents: 'none', fontFamily: 'monospace' }}
-    >
-      {adm.toFixed(1)}
-    </text>
-    {/* Main label */}
-    <text
-      x={cx} y={cy + 4}
-      textAnchor="middle"
-      fontSize={16}
-      fontWeight="700"
-      fill="#fff"
-      style={{ pointerEvents: 'none', fontFamily: 'monospace' }}
-    >
-      {adm.toFixed(1)}
-    </text>
-  </>
-)}
+                  <>
+                    {/* Outline layer */}
+                    <text
+                      x={cx} y={cy + 4}
+                      textAnchor="middle"
+                      fontSize={16}
+                      fontWeight="700"
+                      fill="none"
+                      stroke="#000"
+                      strokeWidth={3}
+                      strokeLinejoin="round"
+                      style={{ pointerEvents: 'none', fontFamily: 'monospace' }}
+                    >
+                      {adm.toFixed(1)}
+                    </text>
+                    {/* Main label */}
+                    <text
+                      x={cx} y={cy + 4}
+                      textAnchor="middle"
+                      fontSize={16}
+                      fontWeight="700"
+                      fill="#fff"
+                      style={{ pointerEvents: 'none', fontFamily: 'monospace' }}
+                    >
+                      {adm.toFixed(1)}
+                    </text>
+                  </>
+                )}
 
                 {/* System name below node */}
                 <text
