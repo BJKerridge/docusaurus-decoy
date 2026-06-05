@@ -36,7 +36,9 @@ const data = [
   { month: 'December 2025', value: 3747700000 },
   { month: 'January 2026', value: 2150300000 },
   { month: 'February 2026', value: 2849100000 },
-  { month: 'March 2026', value: 1853000000 }
+  { month: 'March 2026', value: 1853000000 },
+  { month: 'April 2026', value: 2293000000 },
+  { month: 'May 2026', value: 1628500000 }
 ];
 
 const CustomTooltip = ({ active, payload, label }) => {
