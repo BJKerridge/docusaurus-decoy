@@ -17,7 +17,7 @@ The home of DECOY is the Fortizar [T8H-66](https://evemaps.dotlan.net/map/Querio
 |W-KQPI|-0.59|Astra|-|3|-|-|Ice|
 |PUIG-F|-0.67|Astra|-|1|-|Megacyte 2|-|
 |0-HDC8|-0.72|Astra|-|3|-|-|Ice + A0|
-|SVM-3K|-0.63|Astra|-|1|-|Isogen 2|-|
+|SVM-3K|-0.63|Astra|-|1|-|-|-|
 
 We also hold sov in a constellation in Querious:
 
